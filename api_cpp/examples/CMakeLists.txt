@@ -21,6 +21,19 @@ else()
   set(KORTEX_SUB_DIR "${KORTEX_SUB_DIR}/")
 endif()
 
+if(WIN32)
+  if(NOT EXISTS "..\kortex_api")
+    execute_process(COMMAND ..\installAPI.bat)
+  endif()
+endif()
+
+if(UNIX)
+  if(NOT EXISTS "../kortex_api")
+    execute_process(COMMAND ../installAPI.sh)
+  endif()
+endif()
+
+
 add_subdirectory(000-Getting_started)
 #add_subdirectory(101-BaseGen3_config)
 add_subdirectory(100-BaseGen3_overview)
